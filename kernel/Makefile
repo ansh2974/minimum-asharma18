@@ -12,7 +12,12 @@ CORE_OBJECTS := \
 	$(BUILD)/core/console.o \
 	$(BUILD)/core/irq.o \
 	$(BUILD)/core/irq_entry.o \
-	$(BUILD)/core/msh.o
+	$(BUILD)/core/svc_entry.o \
+	$(BUILD)/core/user_entry.o \
+	$(BUILD)/core/syscall.o \
+	$(BUILD)/core/fault.o \
+	$(BUILD)/core/loader.o \
+	$(BUILD)/core/vm.o
 RUNTIME_OBJECTS := \
 	$(BUILD)/runtime/block.o \
 	$(BUILD)/runtime/exception.o \

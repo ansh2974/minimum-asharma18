@@ -56,6 +56,11 @@ SECTIONS
     __minemu_und_stack_top = .;
   } :kernel
 
+  /* first page of RAM not used by the kernel image; pages from here up are
+   * handed out by vm_alloc_page */
+  . = ALIGN(4096);
+  __minemu_kernel_end = .;
+
   __minemu_svc_stack_top_paddr = __minemu_svc_stack_top - 0x80000000;
   __minemu_irq_stack_top_paddr = __minemu_irq_stack_top - 0x80000000;
   __minemu_abt_stack_top_paddr = __minemu_abt_stack_top - 0x80000000;

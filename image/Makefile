@@ -5,16 +5,20 @@ KERNEL := ../kernel/build/minimum-kernel.elf
 USER_PROGRAM := ../user/prog/minimum-user/build/minimum-user.elf
 
 KERNEL_INPUTS := $(wildcard ../kernel/src/core/*.c) \
+	$(wildcard ../kernel/src/core/*.S) \
 	$(wildcard ../kernel/src/runtime/*.c) \
 	$(wildcard ../kernel/src/startup/*.S) \
 	$(wildcard ../kernel/include/minemu/*.h) \
+	$(wildcard ../kernel/include/minimum/*.h) \
 	../kernel/linker/kernel.ld \
 	../kernel/Makefile
 
 USER_INPUTS := $(wildcard ../user/prog/minimum-user/*.c) \
 	$(wildcard ../user/prog/minimum-user/*.S) \
 	$(wildcard ../user/lib/src/*.c) \
+	$(wildcard ../user/lib/src/*.S) \
 	$(wildcard ../user/lib/include/*.h) \
+	$(wildcard ../kernel/include/minemu/user_abi.h) \
 	../user/common/common.mk \
 	../user/common/user.ld \
 	../user/lib/Makefile \

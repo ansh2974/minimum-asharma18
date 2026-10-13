@@ -1,0 +1,25 @@
+image = "fixtures/ioctl-abi/build/hw2-ioctl-abi.img"
+boot_rom = "../../bootloader/bootloader.bin"
+max_ticks = 1000000
+
+[assert]
+uart0_contains = "abi ok\n"
+execution_lifecycle = "paused"
+shutdown_lifecycle = "stopped"
+mmu_enabled = true
+cpu_mode = "user"
+trace_values = [
+  7,          # UART0 write returned 7
+  0,          # seed
+  0xffffffff, # get_data into kernel memory rejected
+  0,          # get_data
+  0x87985aa5, # first value after seeding 0x12345678 (same as devices.toml)
+  0xffffffff, # bad fd
+  0xffffffff, # bad op
+  0xffffffff, # write from kernel memory
+  0xffffffff, # read into System ROM
+  0xffffffff, # negative length
+  0xffffffff, # unknown syscall number
+  0xabc,      # trace_event
+  0,          # trace_event result
+]
